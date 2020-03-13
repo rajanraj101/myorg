@@ -11,7 +11,58 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8080/myorg/employees/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"myorg",
+						"employees",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employee - add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-COM-PERSIST",
+						"value": "true",
+						"type": "text"
+					},
+					{
+						"key": "X-COM-LOCATION",
+						"value": "EUROPE",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t\t{\r\n            \"firstName\": \"Manoj\",\r\n            \"lastName\": \"Vajpayee\",\r\n            \"email\": \"manoj@gmail.com\"\r\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/myorg/employees/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"myorg",
+						"employees",
+						"add"
+					]
 				}
 			},
 			"response": []

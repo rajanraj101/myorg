@@ -37,20 +37,24 @@ public class EmployeeController
                         @RequestBody Employee employee) 
                  throws Exception 
     {       
+
+    	System.out.println("add employee request for " + employee);
         //Generate resource id
         Integer id = employeeDao.getAllEmployees().getEmployeeList().size() + 1;
         employee.setId(id);
         
         //add resource
         employeeDao.addEmployee(employee);
+
+    	System.out.println("employee added ID :" + employee.getId());
         
-        //Create resource location
+       /* //Create resource location
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                                     .path("/{id}")
                                     .buildAndExpand(employee.getId())
-                                    .toUri();
+                                    .toUri();*/
         
         //Send location in response
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.accepted().body(employee);
     }
 }
