@@ -1,5 +1,7 @@
 # myorg
 springboot2 rest services 
+
+Change the log file location in ~\src\main\resources\log4j2.xml
  
  
 To run app:
@@ -8,3 +10,6 @@ java -jar target/myorg-0.0.1.jar
 
 URL: 
 http://localhost:8080/myorg/employees/all
+
+ 
+

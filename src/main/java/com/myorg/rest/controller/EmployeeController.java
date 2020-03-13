@@ -2,6 +2,8 @@ package com.myorg.rest.controller;
 
 import java.util.Optional;
 
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +22,15 @@ import com.myorg.rest.model.Employees;
 @RequestMapping(path = "/myorg/employees")
 public class EmployeeController 
 {
+	private static final Logger LOGGER=LogManager.getLogger(EmployeeController.class.getSimpleName());
+	
     @Autowired
     private EmployeeDAO employeeDao;
     
     @GetMapping(path="/all", produces = "application/json")
     public Employees getEmployees() 
     {
-    	System.out.println("get all employees");
+    	LOGGER.debug("get all employees");
         return employeeDao.getAllEmployees();
     }
    
@@ -38,7 +42,7 @@ public class EmployeeController
                  throws Exception 
     {       
 
-    	System.out.println("add employee request for " + employee);
+    	LOGGER.debug("add employee request for " + employee);
         //Generate resource id
         Integer id = employeeDao.getAllEmployees().getEmployeeList().size() + 1;
         employee.setId(id);
@@ -46,7 +50,7 @@ public class EmployeeController
         //add resource
         employeeDao.addEmployee(employee);
 
-    	System.out.println("employee added ID :" + employee.getId());
+    	LOGGER.debug("employee added ID :" + employee.getId());
         
        /* //Create resource location
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -63,7 +67,7 @@ public class EmployeeController
                  throws Exception 
     {  
 
-    	System.out.println("get employee for id "+ id);
+    	LOGGER.debug("get employee for id "+ id);
     	Optional<Employee> e = employeeDao.getAllEmployees().getEmployeeList()
     													.stream()
     													.filter(emp -> (emp.getId() == id) )
