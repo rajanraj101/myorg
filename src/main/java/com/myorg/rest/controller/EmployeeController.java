@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -78,8 +79,23 @@ public class EmployeeController
     	} else {
     		 return ResponseEntity.ok().body("Employee not found with Id:" + id);
     	}
-    	 
+    }
+    
+
+    
+    @DeleteMapping(path= "/{id}", produces = "application/json")
+    public ResponseEntity<Object> deleteEmployee(@PathVariable int id) 
+                 throws Exception 
+    {  
+
+    	LOGGER.debug("get employee for id "+ id);
+    	boolean isRemoved = employeeDao.getAllEmployees().getEmployeeList().removeIf(emp -> (emp.getId() == id) );
     	
+    	if(isRemoved) { 
+    		 return ResponseEntity.ok().body("isDeleted: " + isRemoved +", id: " + id);
+    	} else {
+    		 return ResponseEntity.ok().body("Employee not found with Id:" + id);
+    	}
     }
     
 }

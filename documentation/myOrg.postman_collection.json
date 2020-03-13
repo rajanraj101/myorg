@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "0f2040ee-d2dd-4acc-9fc7-510d9acd037c",
 		"name": "myOrg",
+		"description": "# Introduction\nApi for employees\n\n# Overview\nyou can view, add employess\n\n# Authentication\nno authentication as for now\n\n# Error Codes\nno codes for now\n\n# Rate limit\nIs there a limit to the number of requests an user can send? no",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -71,6 +72,27 @@
 			"name": "employee - get by Id",
 			"request": {
 				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/myorg/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"myorg",
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employee - delete by Id",
+			"request": {
+				"method": "DELETE",
 				"header": [],
 				"url": {
 					"raw": "http://localhost:8080/myorg/employees/1",
