@@ -1,16 +1,16 @@
 package com.myorg.rest.controller;
 
-import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.myorg.rest.dao.EmployeeDAO;
 import com.myorg.rest.model.Employee;
@@ -55,6 +55,27 @@ public class EmployeeController
                                     .toUri();*/
         
         //Send location in response
-        return ResponseEntity.accepted().body(employee);
+        return ResponseEntity.accepted().body("Employee added successfully " + employee);
     }
+    
+    @GetMapping(path= "/{id}", produces = "application/json")
+    public ResponseEntity<Object> getEmployee(@PathVariable int id) 
+                 throws Exception 
+    {  
+
+    	System.out.println("get employee for id "+ id);
+    	Optional<Employee> e = employeeDao.getAllEmployees().getEmployeeList()
+    													.stream()
+    													.filter(emp -> (emp.getId() == id) )
+    													.findFirst() ;
+
+    	if(e.isPresent()) {
+    		 return ResponseEntity.ok().body(e);
+    	} else {
+    		 return ResponseEntity.ok().body("Employee not found with Id:" + id);
+    	}
+    	 
+    	
+    }
+    
 }
