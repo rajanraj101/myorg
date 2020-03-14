@@ -53,13 +53,6 @@ public class EmployeeController
 
     	LOGGER.debug("employee added ID :" + employee.getId());
         
-       /* //Create resource location
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                                    .path("/{id}")
-                                    .buildAndExpand(employee.getId())
-                                    .toUri();*/
-        
-        //Send location in response
         return ResponseEntity.accepted().body("Employee added successfully " + employee);
     }
     
@@ -80,9 +73,7 @@ public class EmployeeController
     		 return ResponseEntity.ok().body("Employee not found with Id:" + id);
     	}
     }
-    
-
-    
+        
     @DeleteMapping(path= "/{id}", produces = "application/json")
     public ResponseEntity<Object> deleteEmployee(@PathVariable int id) 
                  throws Exception 
