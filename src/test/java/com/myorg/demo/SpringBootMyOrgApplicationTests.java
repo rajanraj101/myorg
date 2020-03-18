@@ -45,7 +45,7 @@ public class SpringBootMyOrgApplicationTests {
 	public void test_AddEmployee_when_MissingHeader() throws URISyntaxException 
 	{
 	    RestTemplate restTemplate = new RestTemplate();
-	    final String baseUrl = "http://localhost:"+randomServerPort+"/myorg/employees/add";
+	    final String baseUrl = "http://localhost:"+randomServerPort+"/myorg/employees/";
 	    URI uri = new URI(baseUrl);
 	    Employee employee = new Employee(null, "Adam", "Gilly", "test@email.com");
 	     
@@ -55,7 +55,7 @@ public class SpringBootMyOrgApplicationTests {
 	     
 	    try
 	    {
-	        restTemplate.postForEntity(uri, request, String.class);
+	        restTemplate.put(uri, request);
 	        Assert.fail();
 	    }
 	    catch(HttpClientErrorException ex) 

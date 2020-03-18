@@ -30,7 +30,7 @@
 		{
 			"name": "employee - add",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "X-COM-PERSIST",
@@ -53,7 +53,7 @@
 					"raw": "\t\t{\r\n            \"firstName\": \"Manoj\",\r\n            \"lastName\": \"Vajpayee\",\r\n            \"email\": \"manoj@gmail.com\"\r\n        }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/myorg/employees/add",
+					"raw": "http://localhost:8080/myorg/employees/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -62,7 +62,7 @@
 					"path": [
 						"myorg",
 						"employees",
-						"add"
+						""
 					]
 				}
 			},
