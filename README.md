@@ -21,7 +21,7 @@ go to browser
 http://localhost:8080/myorg/employees/all
 ```
 
-##Docker commands
+## Docker commands
 
 Make sure jar file and Dockerfile are in same directory
 
@@ -38,4 +38,9 @@ $docker images
 ## To run docker image in container
 ```
 $docker run -p 8080:8080 docker-myorg
+``` 
+
+## To view all containers
+```
+$container ls -a 
 ``` 
